@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory Inventory</title>
+</head>
+<body>
+    <h1>Electronic Inventory</h1>
+    <form>
+        <label>PRODUCT NAME</label>
+        <input type="text" name="name"/><br><br>
+        
+        <label>PRODUCT ID</label>
+        <input type="text" name="id"/><br><br>
+        
+        <label>PRODUCT PRICE</label>
+        <input type="number" name="price" required/><br><br>
+
+        <label>TOTAL QUANTITY</label>
+        <input type="number" name="quantity" required/><br><br>
+
+        <input type="button" value="Add Item" onclick="addnewitem(this.form)">       
+        <button type="reset">Reset</button>
+
+    </form>
+    <br><br><hr>
+    <div id="root"></div>
+    <script>
+        function createitems(name,id,cost,quantity){
+            return{
+                name:name,
+                id:id,
+                cost:cost,
+                quant:quantity,
+                totalvalue:()=>{return (cost*quantity)}
+            }
+        }
+        arr=[];
+        function addnewitem(form){
+            document.getElementById("root").innerHTML="";
+            let name=form.name.value;
+            let id=form.id.value;
+            let price=form.price.value;
+            let quantity=form.quantity.value;
+
+            arr.push(createitems(name,id,price,quantity));
+            arr.map((obj)=>{
+                let content=document.createElement("div");
+                const article="Product Name==>"+obj.name+
+                "<br>Product ID==>"+obj.id+
+                "<br>Total Quantity==>"+obj.quant+
+                "<br>Product Price==>"+obj.cost+
+                "<br>Total Value==>"+obj.totalvalue();
+                content.innerHTML="<div>"+article+"</div><br><hr>";
+                document.getElementById("root").append(content);
+            });
+        }
+    </script>
+</body>
+</html>

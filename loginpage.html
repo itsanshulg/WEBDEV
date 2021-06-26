@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <div class="container">
+        <center>
+            <form>
+                USER NAME: <input type="text" name="userid" placeholder="user"><br>
+                PASSWORD: <input type="password" name="pswd" placeholder="password"><br>
+                <input type="button" onclick="check(this.form)" name="Login" value="Login">
+                <input type="reset" name="Reset">
+            </form>
+        </center>
+    </div>
+    <script language="javascript">
+        var ck_username=/^[1A-ZA-Z0-9A-ZA-ZA-Z-0-9].{8,}$/;
+        var ck_password=/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,13}$/;
+        function check(form)
+            {
+                var user=form.userid.value;
+                var pwd=form.pswd.value;
+
+                if (!ck_username.test(user)||!ck_password.test(pwd))
+                    {
+                        alert("!!INVALID USER NAME OR PASSWORD!!");
+                    }
+
+                else
+                    {
+                        alert("Successfully Logged in..");
+                        document.write(user);
+                        var d=new Date();
+                        document.write(d);
+                        document.body.bgColor="yellow";
+                    }
+                
+                
+                
+            }
+    </script>
+</body>
+</html>
