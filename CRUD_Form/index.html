@@ -47,50 +47,53 @@
 
     </div>
          -->
-        <center><h2>Employee Details</h2></center> 
-         <table>
-             <tr>
-                 <td>
-                     <form onsubmit="event.preventDefault(); onformsubmit();">
-                         <div>
-                             <label> Full name</label>
-                             <input type="text" name="FullName" id="FullName">
-                         <div>
-                             <label> EMP Code</label>
-                             <input type="text" name="EMPCode" id="EMPCode">
-                         <div>
-                             <label> Salary</label>
-                             <input type="text" name="Salary" id="Salary">
-                         <div>
-                             <label> Field</label>
-                             <input type="text" name="Field" id="Field">
-                         </div>
+    <center>
+        <h2>Employee Details</h2>
+    </center>
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div>
+                        <label>Full Name*</label><label class="validation-error hide" id="fullNameValidationError">This
+                            field is required.</label>
+                        <input type="text" name="fullName" id="fullName">
+                    </div>
+                    <div>
+                        <label>EMP Code</label>
+                        <input type="text" name="empCode" id="empCode">
+                    </div>
+                    <div>
+                        <label>Salary</label>
+                        <input type="text" name="salary" id="salary">
+                    </div>
+                    <div>
+                        <label>City</label>
+                        <input type="text" name="city" id="city">
+                    </div>
+                    <div class="form-action-buttons">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="employeeList">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>EMP Code</th>
+                            <th>Salary</th>   
+                            <th>City</th>   
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                         <div  class="form-action-buttons">
-                             <!-- <button value="submit">Submit</button> -->
-                            <input type="submit" value="Submit">
-                        </div>
-                        
-                     </form>
-                 </td>
-                 <td>
-                     <table class="list" id="employeeList">
-                         <thead>
-                             <tr>
-                                 <th>Full Name</th>
-                                 <th>EMP Code</th>
-                                 <th>City</th>
-                                 <th>Field</th>
-                                 <th>Edit</th>
-                             </tr>
-                         </thead>
-                         <tbody>
-
-                         </tbody>
-                     </table>
-                 </td>
-             </tr>
-         </table>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
     <script src="script.js"></script>
 </body>
 
