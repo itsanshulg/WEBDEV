@@ -7,14 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Registration</title>
     <link rel="stylesheet" href="music_school_form.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function validateForm() {
+            let x = document.forms["myform"]["fname"].value;
+            if (x == "") {
+                alert("Name cannot be empty");
+                return false;
+            }
+        }
+    </script>
 </head>
 
 <body>
     <div class="container register-form">
-        <div class="form">
+        <form id="form" name="validate" onsubmit="validateForm() ">
             <div class="note">
                 <p>Register for Music School</p>
             </div>
@@ -23,27 +30,31 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                            <input type="text" class="form-control fname" id="name" placeholder="First Name"
+                                name="fname" required pattern="[A-Za-z]+" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Age *" value="" />
+                            <input type="number" class="form-control age" id="age" placeholder="Enter Age" name="age"
+                                min="18" max="60" required />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control pno" id="phone" placeholder="Enter Pnone No." type="text"
+                                name="phno" pattern="[0-9]{10}" required /><br>
+
                         </div>
                         <div class="form-group">
                             Gender:
                             <input type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
                             Male
                         </div>
-                        <div class="form-group dropdown">
-                            <button class="btn btn-color dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Instrument
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
+                        <b><label>Instruments</label></b>
+                        <select name="course" class="btn-color">
+                            <option>--Select--</option>
+                            <option>Guitar</option>
+                            <option>Piano</option>
+                            <option>Drums</option>
+                            <option>Flute</option>
+                        </select><br><br>
                         <div class="form-group">
                             Need of Demo:
                             <input type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
@@ -63,10 +74,16 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                            <input type="text" class="form-control lname" id="name" placeholder="Last Name" name="lname"
+                                required pattern="[A-Za-z]+" />
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="E-mail *" value="" />
+                            <input type="email" class="form-control email" id="email" placeholder="Enter Email"
+                                name="email" pattern="^[a-z0-9]+@[a-z]+\.com$" required />
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control addr" id="address" placeholder="Enter Address" name="addr"
+                                required></textarea>
                         </div>
                         <div class="form-group">
                             <input type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
@@ -89,12 +106,84 @@
                         </div>
                     </div>
                 </div>
-
-                <input type="submit" href="#" class="btSubmit" value="Submit">
-                <button type="submit" href="">Submit</button>
+                <button type="submit" onsubmit="validateForm() " class="btSubmit">Register</button>
             </div>
-        </div>
+        </form>
     </div>
+
+    <script>
+        /* validate name */
+        const name = document.getElementById("name");
+        name.addEventListener("input", () => {
+            name.setCustomValidity("");
+            name.checkValidity();
+        });
+        name.addEventListener("invalid", () => {
+            if (name.value === "") {
+                name.setCustomValidity("Please enter a name");
+            }
+            else {
+                name.setCustomValidity("Enter only Uppercase and lowercase characters");
+            }
+        });
+
+        /*validate email */
+        const email = document.getElementById("email");
+        email.addEventListener("input", () => {
+            email.setCustomValidity("");
+            email.checkValidity();
+        });
+        email.addEventListener("invalid", () => {
+            if (email.value === "") {
+                email.setCustomValidity("Please enter a email id");
+            }
+            else {
+                email.setCustomValidity("Enter valid mail id");
+            }
+        });
+
+        /* validate age */
+        const age = document.getElementById("age");
+        age.addEventListener("input", () => {
+            age.setCustomValidity("");
+            age.checkValidity();
+        });
+        age.addEventListener("invalid", () => {
+            if (age.value === "") {
+                age.setCustomValidity("Please enter an Age");
+            } else {
+                age.setCustomValidity("Enter a Valid age");
+            }
+        });
+
+        /* validate address */
+        const address = document.getElementById("address");
+        address.addEventListener("input", () => {
+            address.setCustomValidity("");
+            address.checkValidity();
+        });
+        address.addEventListener("invalid", () => {
+            if (address.value === "") {
+                address.setCustomValidity("Please enter an address");
+            } else {
+                address.setCustomValidity("Enter a Valid Address");
+            }
+        });
+
+        /* validate phone no */
+        const phone = document.getElementById("phone");
+        phone.addEventListener("input", () => {
+            phone.setCustomValidity("");
+            phone.checkValidity();
+        });
+        phone.addEventListener("invalid", () => {
+            if (phone.value === "") {
+                phone.setCustomValidity("Please enter a Phone Number");
+            } else {
+                phone.setCustomValidity("Enter a Valid Phone number");
+            }
+        });
+    </script>
 </body>
 
 </html>
