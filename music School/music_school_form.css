@@ -1,0 +1,42 @@
+.register-form
+{
+    background:rgb(177, 197, 202)
+}
+.note
+{
+    text-align: center;
+    height: 80px;
+    background: -webkit-linear-gradient(left, #7d8b9c, #dacee0);
+    font-weight: bold;
+    line-height: 80px;
+}
+.form-content
+{
+    padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+}
+.form-control{
+    border-radius:1.5rem;
+}
+.btSubmit
+{
+    border:none;
+    border-radius:1.5rem;
+    padding: 1%;
+    width: 20%;
+    cursor: pointer;
+    background: #7d8b9c;
+    color: #fff;
+}
+.btn-color
+{
+    border-radius: 1.5;
+    background:#7d8b9c;
+    color: #fff;
+    padding: 1%;
+    width: 50%;
+    cursor: pointer;
+    border:none;
+    
+}
