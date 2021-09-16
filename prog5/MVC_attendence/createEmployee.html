@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATTENDENCE MANAGEMENT</title>
+  <script src="src/controller/initialize.js"></script>
+  <script src="src/model/Employee.js"></script>
+  <script src="src/view/createEmployee.js"></script>
+  <script>
+    window.addEventListener('load', init.view.createEmployee.setupUI);
+  </script>
+</head>
+
+<body>
+  <h1>ATTENDENCE MANAGEMENT</h1>
+  <form id="Employee">
+    <menu>
+      <label> Employee Name</label><input type="text" name="ename"></br>
+      <label> Employee Id</label><input type="text" name="empid"></br>
+      <input type="date" name="edate"></br>
+      <label>select your department</label><select id="dept" name="edepartment">
+        <option value="mca">mca</option>
+        <option value="mtech">mtech</option>
+        <option value="msc">msc</option>
+      </select></br>
+      <label>statuss</label><input type="radio" name="status" id="status" value="Present">present<input type="radio"
+        name="status" value="Absent">absent</br>
+      <button type="button" name="commit">Save</button>
+      <a href="listEmployees.html"><button type="button">list Employee</button></a></br>
+    </menu>
+  </form>
+</body>
+
+</html>
