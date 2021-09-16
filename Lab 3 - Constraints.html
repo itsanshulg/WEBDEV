@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Insurance Application form</title>
+		<script>
+			function printError(elementId, errorMessage) {
+				document.getElementById(elementId).innerHTML = errorMessage;
+			}
+
+			function validateForm() {
+				let name = document.forms["form"].name.value;
+				let email = document.forms["form"].email.value;
+				let age = document.forms["form"].age.value;
+				let phone = document.forms["form"].phone.value;
+				let aadhar = document.forms["form"].aadhar.value;
+				let address = document.forms["form"].address.value;
+				let vehicle = document.forms["form"].vehicle.value;
+				let vehicleNumber = document.forms["form"].vehicleNumber.value;
+				let licenseNumber = document.forms["form"].licenseNumber.value;
+				let engineNumber = document.forms["form"].engineNumber.value;
+				let insuranceType = document.forms["form"].insuranceType.value;
+
+				let nameErr = true;
+				let ageErr = true;
+				let phoneErr = true;
+				let aadharErr = true;
+				let addressErr = true;
+				let vehicleErr = true;
+				let vehicleNumberErr = true;
+				let licenseNumberErr = true;
+				let engineNumberErr = true;
+				let insuranceTypeErr = true;
+
+				console.log("Function called");
+
+				if (name == "") {
+					printError("nameErr", "Please enter your name");
+				} else {
+					let regex = /^[a-zA-Z\s]+$/;
+					if (regex.test(name) === false) {
+						printError("nameErr", "Please enter a valid name");
+					} else {
+						printError("nameErr", "");
+						nameErr = false;
+					}
+				}
+
+				if (age == "") {
+					printError("ageErr", "Please enter your age");
+				} else {
+					if (age < 18) {
+						printError(
+							"ageErr",
+							"You have to be above 18 to file for an insurance"
+						);
+					}
+				}
+
+				if (email == "") {
+					printError("emailErr", "Please enter an email");
+				} else {
+					let regex = /^\S+@\S+\.\S+$/;
+					if (regex.test(email) === false) {
+						printError("emailErr", "Please enter a valid email address");
+					} else {
+						printError("emailErr", "");
+						emailErr = false;
+					}
+				}
+
+				if (phone == "") {
+					printError("phoneErr", "Please enter your mobile number");
+				} else {
+					let regex = /^[1-9]\d{9}$/;
+					if (regex.test(phone) === false) {
+						printError(
+							"phoneErr",
+							"Please enter a valid 10 digit mobile number"
+						);
+					} else {
+						printError("phoneErr", "");
+						phoneErr = false;
+					}
+				}
+
+				if (aadhar == "") {
+					printError("aadharErr", "Please enter your Aadhar number");
+				} else {
+					let regex = /^[1-9A-Z]{12}$/;
+					if (regex.test(aadhar) === false) {
+						printError("aadharErr", "Please enter a valid aadhar number");
+					} else {
+						printError("aadharErr", "");
+						aadharErr = false;
+					}
+				}
+
+				if (address == "") {
+					printError("addressErr", "Please Enter your address");
+				} else {
+					if (address.length < 30) {
+						printError("addressErr", "Please enter a valid address");
+					} else {
+						printError("addressErr", "");
+						addressErr = false;
+					}
+				}
+
+				if (vehicle == "") {
+					printError("vehicleErr", "Please select vehicle type");
+				} else {
+					printError("vehicleErr", "");
+					vehicleErr = false;
+				}
+
+				if (vehicleNumber == "") {
+					printError("vehicleNumberErr", "Please enter vehicle Number");
+				} else {
+					let regex = /[0-9A-Z]+$/;
+					if (regex.test(vehicleNumber) === false) {
+						printError("vehicleNumberErr", "Please Enter valid vehicle number");
+					} else {
+						printError("vehicleNumberErr", "");
+						vehicleNumberErr = false;
+					}
+				}
+
+				if (
+					(nameErr ||
+						ageErr ||
+						phoneErr ||
+						emailErr ||
+						aadharErr ||
+						addressErr ||
+						vehicleErr ||
+						vehicleNumberErr ||
+						licenseNumberErr ||
+						engineNumberErr ||
+						insuranceTypeErr) == true
+				) {
+					return false;
+				} else {
+					let data = `You have entered the following details Name: ${name}\n
+                    Age: ${email} \n Phone: ${phone} \n Aadhar: ${aadhar} \n Address: ${address} \n Vehicle: ${vehicle}\n
+                    Vehicle Number: ${vehicleNumber}\n License Number: ${licenseNumber}\n Engine Number: ${engineNumber}\n Insurance Type: ${insuranceType} `;
+
+					alert(data);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Insurance Application Form</h1>
+		<form name="form" id="form">
+			<p>
+				<label>Name: <input type="text" name="name" /> </label>
+				<div id="nameErr"></div>
+			</p>
+			<p>
+				<label>Age: <input type="text" name="age" /> </label>
+				<div id="ageErr"></div>
+			</p>
+
+			<p>
+				<label
+					>Email: <input type="text" name="email" />
+					<div id="emailErr"></div></label>
+					</p>
+
+			<p>
+				<label
+					>Phone number: <input type="text" name="phone" maxlength="10"
+				/></label>
+				<div id="phoneErr"></div>
+			</p>
+
+			<p>
+				<label
+					>Aadhar Number: <input type="text" name="aadhar" maxlength="12"
+				/></label>
+				<div id="aadharErr"></div>
+			</p>
+
+			<p>
+				<label>Address: <input type="text" name="address" /> </label>
+				<div id="addressErr"></div>
+			</p>
+			<p>
+				<label>Vehicle Type: </label>
+				<label><input type="radio" name="vehicle" value="bike" /> Bike</label>
+				<label><input type="radio" name="vehicle" value="car" /> Car</label>
+				<div id="vehicleErr"></div>
+			</p>
+			<p>
+				<label
+					>Vehicle Number: <input type="text" name="vehicleNumber"
+				/></label>
+				<div id="vehicleNumberErr"></div>
+			</p>
+			<p>
+				<label
+					>License Number: <input type="text" name="licenseNumber"
+				/></label>
+				<div id="licenseNumberErr"></div>
+			</p>
+			<p>
+				<label>Engine Number: <input type="text" name="engineNumber" /></label>
+				<div id="engineNumberErr"></div>
+			</p>
+			<p>
+				<label
+					>Insurance type:
+					<select name="insuranceType">
+						<option value="">---</option>
+						<option value="comprehensive">Comprehensive</option>
+						<option value="thirdparty">Third Party</option>
+					</select>
+				</label>
+
+				<div id="insuranceTypeErr"></div>
+			</p>
+
+			<p>
+				<label>Total Amount is: <output name="total"></output>></label>
+			</p>
+			<div>
+				<button type="button" onclick="validateForm()">Submit</button>
+			</div>
+		</form>
+	</body>
+</html>
